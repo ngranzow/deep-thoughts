@@ -10,7 +10,7 @@ import { ADD_FRIEND } from '../utils/mutations';
 import { QUERY_USER, QUERY_ME } from '../utils/queries';
 import Auth from '../utils/auth';
 
-const Profile = () => {
+const Profile = (props) => {
   const { username: userParam } = useParams();
   const [addFriend] = useMutation(ADD_FRIEND);
 
@@ -22,7 +22,7 @@ const Profile = () => {
 
   // navigate to personal profile page if username is yours
   if (Auth.loggedIn() && Auth.getProfile().data.username === userParam) {
-    return <Navigate to="/profile" />;
+    return <Navigate to="/profile:username" />;
   }
 
   if (loading) {
